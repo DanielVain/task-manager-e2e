@@ -37,7 +37,7 @@ exports.getById = async (id) => {
     return get('SELECT * FROM tasks WHERE id = ?', [id]);
 }
 
-exports.create = async (id, title, done = 0, updatedAt) => {
+exports.create = async ({id, title, done = 0, updatedAt}) => {
     await run("INSERT INTO tasks (id, title, done, updatedAt) VALUES (?, ?, ?, ?);", [id, title, done, updatedAt]);
 
     return exports.getById(id);
